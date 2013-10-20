@@ -1,3 +1,4 @@
+このブランチでインストーラーを作りたい
 # jenkins playframework plugin
 
 [jenkins](http://jenkins-ci.org/)で使えるいい感じの[Play Framework](http://www.playframework.com/)向けのプラグインが無かったので作ることにした。
