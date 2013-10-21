@@ -21,6 +21,7 @@ public class Playframework extends Builder {
 
   public static final class PlayframeworkInstallation extends ToolInstallation implements EnvironmentSpecific<PlayframeworkInstallation>, NodeSpecific<PlayframeworkInstallation> {
 
+    @DataBoundConstructor
     public PlayframeworkInstallation(String name, String home, List<? extends ToolProperty<?>> properties) {
       super(name, home, properties);
     }
