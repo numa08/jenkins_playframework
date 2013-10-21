@@ -2,8 +2,13 @@ package hudson.tasks;
 
 import hudson.EnvVars;
 import hudson.Extension;
+import hudson.Launcher;
+import hudson.model.BuildListener;
 import hudson.model.EnvironmentSpecific;
 import hudson.model.TaskListener;
+import hudson.model.AbstractBuild;
+import hudson.model.AbstractProject;
+import hudson.model.Descriptor;
 import hudson.model.Node;
 import hudson.slaves.NodeSpecific;
 import hudson.tools.ToolDescriptor;
@@ -19,7 +24,31 @@ import org.kohsuke.stapler.DataBoundConstructor;
 
 public class Playframework extends Builder {
 
-  public static final class PlayframeworkInstallation extends ToolInstallation implements EnvironmentSpecific<PlayframeworkInstallation>, NodeSpecific<PlayframeworkInstallation> {
+  @Override
+  public boolean perform(AbstractBuild<?, ?> build, Launcher launcher, BuildListener listener) throws InterruptedException, IOException {
+    return true;
+  }
+
+  @Override
+  public DescriptorImpl getDescriptor() {
+    return (DescriptorImpl)super.getDescriptor();
+  }
+
+  @Extension
+  public static final class DescriptorImpl extends BuildStepDescriptor<Builder>{
+
+    @Override
+    public boolean isApplicable(Class<? extends AbstractProject> jobType) {
+      return true;
+    }
+
+    @Override
+    public String getDisplayName() {
+      return "Playframeworkを呼び出す";
+    }
+  }
+
+public static final class PlayframeworkInstallation extends ToolInstallation implements EnvironmentSpecific<PlayframeworkInstallation>, NodeSpecific<PlayframeworkInstallation> {
 
     @DataBoundConstructor
     public PlayframeworkInstallation(String name, String home, List<? extends ToolProperty<?>> properties) {
