@@ -19,6 +19,8 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
+import jenkins.model.Jenkins;
+
 import org.kohsuke.stapler.DataBoundConstructor;
 
 public class Playframework extends Builder {
@@ -75,6 +77,11 @@ public class Playframework extends Builder {
     public PlayframeworkInstallation[] getInstallations() {
       return mInstallations;
     }
+
+    public void setInstallations(PlayframeworkInstallation[] installations) {
+      mInstallations = installations;
+      save();
+    }
   }
 
 public static final class PlayframeworkInstallation extends ToolInstallation implements EnvironmentSpecific<PlayframeworkInstallation>, NodeSpecific<PlayframeworkInstallation> {
@@ -99,10 +106,20 @@ public static final class PlayframeworkInstallation extends ToolInstallation imp
     @Extension
     public static class DescriptorImpl extends ToolDescriptor<PlayframeworkInstallation> {
 
-		@Override
-		public String getDisplayName() {
-			return "Playframeowk";
-		}
+      @Override
+      public String getDisplayName() {
+        return "Playframeowk";
+      }
+
+      @Override
+      public PlayframeworkInstallation[] getInstallations() {
+        return Jenkins.getInstance().getDescriptorByType(Playframework.DescriptorImpl.class).getInstallations();
+      }
+
+      @Override
+      public void setInstallations(PlayframeworkInstallation... installations) {
+        Jenkins.getInstance().getDescriptorByType(Playframework.DescriptorImpl.class).setInstallations(installations);
+      }
     }
   }
 
