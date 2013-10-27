@@ -24,13 +24,13 @@ import org.kohsuke.stapler.DataBoundConstructor;
 public class Playframework extends Builder {
 
   private final String mPlayName;
-  private final String mTarget;
+  private final String mTargets;
   private final String mProjectDir;
 
   @DataBoundConstructor
-  public Playframework(String playName, String target, String projectDir) {
+  public Playframework(String playName, String targets, String projectDir) {
     mPlayName = playName;
-    mTarget = target;
+    mTargets = targets;
     mProjectDir = projectDir;
   }
 
@@ -38,8 +38,8 @@ public class Playframework extends Builder {
     return mPlayName;
   }
 
-  public String getTarget() {
-    return mTarget;
+  public String getTargets() {
+    return mTargets;
   }
 
   public String getProjectDir() {

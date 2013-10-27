@@ -1,2 +1,8 @@
-<j:jelly xmlns:j="jelly:core">
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+  <f:entry title="target" field="targets">
+    <f:textbox name="target"></f:textbox>
+  </f:entry>
+  <f:entry title="project dir" field="projectDir">
+    <f:textbox name="project dir"></f:textbox>
+  </f:entry>
 </j:jelly>
