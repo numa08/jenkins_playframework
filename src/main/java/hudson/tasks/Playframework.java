@@ -8,7 +8,6 @@ import hudson.model.EnvironmentSpecific;
 import hudson.model.TaskListener;
 import hudson.model.AbstractBuild;
 import hudson.model.AbstractProject;
-import hudson.model.Descriptor;
 import hudson.model.Node;
 import hudson.slaves.NodeSpecific;
 import hudson.tools.ToolDescriptor;
@@ -44,7 +43,7 @@ public class Playframework extends Builder {
 
     @Override
     public String getDisplayName() {
-      return "Playframeworkを呼び出す";
+      return "Playframeworkの呼び出し";
     }
   }
 
