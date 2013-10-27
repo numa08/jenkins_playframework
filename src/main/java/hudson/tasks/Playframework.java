@@ -23,6 +23,29 @@ import org.kohsuke.stapler.DataBoundConstructor;
 
 public class Playframework extends Builder {
 
+  private final String mPlayName;
+  private final String mTarget;
+  private final String mProjectDir;
+
+  @DataBoundConstructor
+  public Playframework(String playName, String target, String projectDir) {
+    mPlayName = playName;
+    mTarget = target;
+    mProjectDir = projectDir;
+  }
+
+  public String getPlayname() {
+    return mPlayName;
+  }
+
+  public String getTarget() {
+    return mTarget;
+  }
+
+  public String getProjectDir() {
+    return mProjectDir;
+  }
+
   @Override
   public boolean perform(AbstractBuild<?, ?> build, Launcher launcher, BuildListener listener) throws InterruptedException, IOException {
     return true;
