@@ -1,4 +1,13 @@
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+  <j:if test="${!empty(descriptor.installataions)}">
+   <f:entry title="Playframework Version">
+     <select class="setting-input" name="playframework.name">
+      <j:forEach var="inst" items="${descriptor.installataions}">
+        <f:option selected="${inst.name==instance.playframework.name}" value="${inst.name}">${inst.name}</f:option>
+      </j:forEach>
+     </select>
+   </f:entry>
+  </j:if>
   <f:entry title="target" field="targets">
     <f:textbox name="target"></f:textbox>
   </f:entry>

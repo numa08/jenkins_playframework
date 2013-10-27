@@ -59,6 +59,9 @@ public class Playframework extends Builder {
   @Extension
   public static final class DescriptorImpl extends BuildStepDescriptor<Builder>{
 
+    
+    private volatile PlayframeworkInstallation[] mInstallations = new PlayframeworkInstallation[0];
+
     @Override
     public boolean isApplicable(Class<? extends AbstractProject> jobType) {
       return true;
@@ -67,6 +70,10 @@ public class Playframework extends Builder {
     @Override
     public String getDisplayName() {
       return "Playframeworkの呼び出し";
+    }
+
+    public PlayframeworkInstallation[] getInstallations() {
+      return mInstallations;
     }
   }
 
